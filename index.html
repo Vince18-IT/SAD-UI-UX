@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"  defer></script>
+    <title>SmartAttend</title>
+</head>
+<body>
+    <div id="landingpage">
+        <div id="nav">
+            <div id="logo"><img src="Icons/Logo.png"><h2>SmartAttend</h2></div>
+            <div id="navbtns">
+                <a href="#features">Features</a>
+                <a href="#process">How It Works</a>
+                <a href="#">Login</a>
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+        <div id="content">
+                <h1>Smart Attendance Checker System</h1>
+
+                <p class="tagline">
+                    Attendance made simple, learning made smarter!
+                </p>
+
+                <p class="bodytext">
+                    Secure QR code-based attendance with GPS verification. Modern,
+                    efficient, and built for schools that value accuracy and security.
+                </p>
+        </div>
+        <div id="welcomebtns">
+            <a href="#" class="welcome-link primary">Get Started</a>
+            <a href="#" class="welcome-link">Log in as Student</a>
+            <a href="#" class="welcome-link">Log in as Teacher</a>
+        </div>
+        <div id="landingpics">
+            <img src="Icons/dclass.png" alt="" class="welcomepics">
+            <img src="Icons/classroom.png" alt="" class="welcomepics">
+        </div>
+
+        <div id="features">
+
+            <div id="headcontent">
+                <h3 id="features-label"class="features-label">FEATURES</h3>
+                <h2 class="features-title">Everything you need for Modern Attendance Management</h2>
+                <p class="features-subtitle">
+                    Comprehensive attendance management with advanced security features
+                </p>
+            </div>
+
+            <div id="forcards">
+
+                <!-- CARD 1 -->
+                <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/location.png" alt="GPS Icon">
+                    </div>
+                    <h4>GPS Verification</h4>
+                    <p class="card-text">
+                        Students must be within school boundaries to mark attendance,
+                        preventing remote check-ins.
+                    </p>
+                    <ul class="card-list">
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Real-time location tracking</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Configurable boundaries</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Anti-spoofing protection</li>
+                    </ul>
+                </div>
+
+                <!-- CARD 2 -->
+            <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/Scanner.png" alt="QR Icon">
+                    </div>
+                    <h4>QR Code Scanning</h4>
+                    <p class="card-text">
+                        Fast and secure attendance marking with dynamic QR codes that
+                        expire after each session.
+                    </p>
+                    <ul class="card-list">
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Time-limited sessions</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Unique codes per session</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Instant verification</li>
+                    </ul>
+                </div>
+
+                <!-- CARD 3 -->
+            <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/Security Shield.png" alt="Shield Icon">
+                    </div>
+                    <h4>Teacher Approval</h4>
+                    <p class="card-text">
+                        Every attendance request requires explicit teacher approval to
+                        prevent fraudulent check-ins.
+                    </p>
+                    <ul class="card-list">
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Manual approval flow</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Real-time notifications</li>
+                        <li><span class="check"><img src="Icons/check-iconn.png"></span> Audit trail</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="process">
+            <div id="processcontent">
+                <h3 id="process-label" class="process-label">PROCESS</h3>
+                <h2 class="process-title">How It Works</h2>
+                <p class="process-subtitle">
+                    Simple three-step process with advanced security
+                </p>
+            </div>
+
+            <div id="cardwrapper">
+                <!-- CARD 1 -->
+                <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/QRcode.png" alt="Generate QR">
+                    </div>
+                    <h4>Step 1: Generate QR</h4>
+                    <p class="process-text">
+                        Instructor starts an attendance session and displays a unique,
+                        time-limited QR code on the classroom screen.
+                    </p>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/Scanner.png" alt="Scan Code">
+                    </div>
+                    <h4>Step 2: Scan Code</h4>
+                    <p class="process-text">
+                        Students scan the QR code using their mobile device camera
+                        within the attendance window.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="cards">
+                    <div class="card-icon">
+                        <img src="Icons/location.png" alt="Verify GPS">
+                    </div>
+                    <h4>Step 3: Verify GPS</h4>
+                    <p class="process-text">
+                        System automatically captures GPS location and verifies the
+                        student is within 50m of the classroom.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="cta-section">
+            <h2 class="cta-title">Ready to Transform Your Attendance?</h2>
+            <p class="cta-subtitle">
+                Join thousands of institutions using SmartAttend for accurate, efficient attendance tracking
+            </p>
+
+            <hr class="cta-divider">
+
+            <div id="footer">
+                <div class="footer-left">
+                    <img src="Icons/Logo.png" alt="logo">
+                    <span>SmartAttend</span>
+                </div>
+                <div class="footer-right">
+                    © 2025 Smart Attendance. All rights reserved.
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

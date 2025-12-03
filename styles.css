@@ -1,6 +1,9 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body{
     margin: 0;
@@ -13,10 +16,11 @@ body{
     width: 100%;
     background: linear-gradient(
         180deg,
-        rgba(26,115,232,1) 0px,
-        rgba(26,115,232,1) 450px,   /* stays blue for 600px down */
-        rgba(230,230,230,1) 100%
+        rgba(26,115,232,1) 0%,    /* solid blue at very top */
+        rgba(26,115,232,1) 45%,   /* keep blue until ~45% of the page */
+        rgba(230,230,230,1) 100%  /* fade to light towards bottom */
     );
+    background-attachment: fixed;
 }
 
 #nav {  
@@ -46,6 +50,7 @@ body{
 #logo img {
     height: 50px;
     width: auto;
+    filter: invert(100%);
 }
 
 
@@ -162,4 +167,265 @@ body{
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: 0.15s ease;
+}
+
+#landingpics img:hover{
+    transform: translateY(-2px);
+}
+
+/* FEATURES SECTION */
+#features {
+    margin-top: 390px;
+    padding: 80px 0 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+/* headings */
+#headcontent {
+    text-align: center;
+    max-width: 720px;
+    margin-bottom: 40px;
+}
+
+.features-label {
+    font-size: 17px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #036ef4;
+    margin: 0 0 8px;
+    transition: 0.25s ease-in-out;
+}
+
+.features-label.active-label {
+    color: #ffffff;     /* turn white when section is active */
+}
+
+
+.features-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.features-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+}
+
+/* cards wrapper */
+#forcards {
+    display: flex;
+    gap: 40px; /* wider spacing like Canva */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* individual card */
+.cards {
+    width: 300px;
+    min-height: 330px;
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 40px 32px 23px; /* increased top padding */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+    text-align: left;
+    transition: 0.15s ease;
+}
+
+.cards:hover {
+    transform: translateY(-2px);
+}
+
+/* top icon */
+.card-icon img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    margin-bottom: 20px;  /* was 12–16px */
+}
+/* title */
+.cards h4 {
+    margin: 0 0 14px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* description */
+.card-text {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.45;
+}
+
+/* list with checks */
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    color: #374151;
+}
+
+.card-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.check img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+/* HOW IT WORKS / PROCESS SECTION */
+#process {
+    margin-top: -40px;               /* pulls it a bit closer to features */
+    padding: 80px 0 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* headings for process */
+#processcontent {
+    text-align: center;
+    max-width: 640px;
+    margin-bottom: 56px;
+}
+
+.process-label {
+    font-size: 17px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #036ef4;
+    margin: 0 0 6px;
+    transition: 0.25s ease;
+}
+
+.process-label.active-label {
+    color: #ffffff;   /* highlight color */
+}
+
+.process-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.process-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+}
+
+/* wrapper for the 3 step cards */
+#cardwrapper {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* process cards (override generic .cards just inside #process) */
+#process .cards {
+    width: 280px;
+    min-height: 240px;
+    background: #ffffff;
+    border-radius: 26px;
+    padding: 32px 26px 15px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+    text-align: left;
+}
+
+/* icon in process cards – reuses .card-icon but tweaks spacing here */
+#process .card-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 18px;
+}
+
+/* title inside process card */
+#process .cards h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* description text inside process card */
+.process-text {
+    margin: 0;
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+
+#cta-section {
+    padding: 50px 0 80px;
+    text-align: center;
+    color: white;
+}
+
+.cta-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.cta-subtitle {
+    font-size: 18px;
+    max-width: 780px;
+    margin: 0 auto 50px;
+    line-height: 1.5;
+}
+
+/* divider line */
+.cta-divider {
+    width: 82%;
+    margin: 40px auto 60px;
+    border: none;
+    border-top: 2px solid rgba(255,255,255,0.6);
+}
+
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 82%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-left img {
+    height: 40px;
+    filter: invert(100%);
+}
+
+.footer-left span {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.footer-right {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
 }
