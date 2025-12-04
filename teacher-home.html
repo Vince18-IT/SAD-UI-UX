@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts (same as other pages) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- shared design file -->
+    <link rel="stylesheet" href="samedesign.css">
+
+    <title>Teacher Dashboard | SmartAttend</title>
+</head>
+<body>
+
+<div class="teacher-dashboard">
+
+    <!-- TOP BAR -->
+    <header class="teacher-topbar">
+        <div class="teacher-topbar-left">
+            <!-- reuse your existing logo markup -->
+            <div class="logo"> 
+                <!-- if you use an img, keep it the same as other pages -->
+                <img src="Icons/Logo.png" alt="SmartAttend logo">
+                <span class="logo-text">SmartAttend</span>
+            </div>
+        </div>
+
+        <div class="teacher-topbar-right">
+            <div class="teacher-identity">
+                <span class="teacher-identity-name">Name of Teacher</span>
+                <span class="teacher-identity-role">(teacher)</span>
+            </div>
+
+            <button class="teacher-logout-btn">
+                <span class="teacher-logout-icon">⮕</span>
+                <span class="teacher-logout-text">Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="teacher-main">
+
+        <!-- GREETING -->
+        <section class="teacher-greeting">
+            <h1 class="teacher-greeting-title">
+                Hello, <span class="teacher-greeting-name">(Name of Teacher)</span>!
+            </h1>
+            <p class="teacher-greeting-subtitle">
+                You’re teaching <span class="teacher-greeting-count">(amount of classes)</span> classes
+            </p>
+        </section>
+
+        <!-- CLASSES SECTION -->
+        <section class="teacher-classes">
+            <div class="teacher-classes-header">
+                <h2 class="teacher-classes-title">My Classes</h2>
+                <a href="create-new-class.html"><button class="teacher-btn-primary teacher-create-class-btn">
+                    + Create New Class
+                </button></a>
+            </div>
+
+            <!-- EMPTY STATE CARD -->
+            <div class="teacher-empty-card">
+                <div class="teacher-empty-card-inner">
+                    <div class="teacher-empty-icon">
+                        <!-- use any icon you like -->
+                        <img src="Icons/book-empty.png" alt="No classes icon">
+                    </div>
+
+                    <h3 class="teacher-empty-title">No classes yet</h3>
+                    <p class="teacher-empty-text">
+                        Create your first class to start managing attendance
+                    </p>
+
+                    <button class="teacher-btn-primary teacher-first-class-btn">
+                        Create Your First Class
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</div>
+
+</body>
+</html>
