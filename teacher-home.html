@@ -16,10 +16,12 @@
 
 <div class="teacher-dashboard">
 
-       <!-- TOP BAR -->
+    <!-- TOP BAR -->
     <header class="teacher-topbar">
         <div class="teacher-topbar-left">
-            <div class="logo">
+            <!-- reuse your existing logo markup -->
+            <div class="logo"> 
+                <!-- if you use an img, keep it the same as other pages -->
                 <img src="Icons/Logo.png" alt="SmartAttend logo">
                 <span class="logo-text">SmartAttend</span>
             </div>
@@ -31,9 +33,8 @@
                 <span class="teacher-identity-role">(teacher)</span>
             </div>
 
-            <!-- unified logout button with icon -->
             <button class="teacher-logout-btn">
-                <img src="Icons/Logout Icon.png" alt="Logout" class="logout-icon">
+                <span class="teacher-logout-icon">⮕</span>
                 <span class="teacher-logout-text">Logout</span>
             </button>
         </div>

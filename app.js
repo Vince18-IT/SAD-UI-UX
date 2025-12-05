@@ -27,3 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(featuresSection);
     observer.observe(processSection);
 });
+

@@ -9,7 +9,6 @@
 
     <!-- shared styles -->
     <link rel="stylesheet" href="samedesign.css">
-
     <title>Teacher Dashboard | Classes Created</title>
 </head>
 <body>
@@ -80,7 +79,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            3 student enrolled
+                            3 student/s enrolled
                             </p>
                         </div>
 
@@ -126,7 +125,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            1 student enrolled
+                            1 student/s enrolled
                             </p>
                         </div>
 
@@ -171,7 +170,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            1 student enrolled
+                            1 student/s enrolled
                             </p>
                         </div>
 
@@ -219,7 +218,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            0 student enrolled
+                            0 student/s enrolled
                             </p>
                         </div>
 
@@ -265,7 +264,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            4 student enrolled
+                            4 student/s enrolled
                             </p>
                         </div>
 
@@ -310,7 +309,7 @@
                             <span class="icon">
                                 <img src="/icons/reading.png" alt="Students">
                             </span>
-                            5 student enrolled
+                            5 student/s enrolled
                             </p>
                         </div>
 
@@ -347,4 +346,14 @@
 </div>
 
 </body>
+
+<script>
+  document.querySelectorAll('.classcard .classcard-actions .class-btn:first-child')
+    .forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'viewbtnteachers.html';
+      });
+    }); 
+</script>
+
 </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class Announcements | SmartAttend</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- shared styles -->
+  <link rel="stylesheet" href="samedesign.css">
+</head>
+<body>
+
+<div class="teacher-dashboard">
+
+  <!-- TOP BAR (same as other pages) -->
+  <header class="teacher-topbar">
+    <div class="teacher-topbar-left">
+      <div class="logo">
+        <img src="Icons/Logo.png" alt="SmartAttend logo">
+        <span class="logo-text">SmartAttend</span>
+      </div>
+    </div>
+
+    <div class="teacher-topbar-right">
+      <div class="teacher-identity">
+        <span class="teacher-identity-name">Name of Teacher</span>
+        <span class="teacher-identity-role">(teacher)</span>
+      </div>
+
+      <button class="teacher-logout-btn">
+        <img src="Icons/Logout Icon.png" alt="Logout" class="logout-icon">
+        <span class="teacher-logout-text">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+ <main class="create-class-main announcements-main">
+<!-- reuse same centering -->
+
+    <!-- back link -->
+    <a href="teacher-class-created.html" class="create-class-back">
+    <img src="Icons/left-arrow.png" alt="" class="back-icon">
+    <span class="sr-only">  Back to Dashboard</span>
+</a>
+
+    <!-- CREATE ANNOUNCEMENT CARD -->
+    <section class="announcement-create-card">
+      <h2 class="announcement-title-main">Create Announcement</h2>
+      <p class="announcement-subtitle">
+        Set up a new announcement for this class
+      </p>
+
+      <form class="announcement-form">
+        <!-- title -->
+        <div class="announcement-group">
+          <label for="announcementTitle">Title</label>
+          <input id="announcementTitle" type="text" placeholder="Example: SAD21">
+        </div>
+
+        <!-- message -->
+        <div class="announcement-group">
+          <label for="announcementMessage">Message</label>
+          <textarea id="announcementMessage" rows="3" placeholder="Message here"></textarea>
+        </div>
+
+        <div class="announcement-actions">
+          <button type="button" class="create-class-btn create-class-btn-primary">
+            + Post Announcement
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- LIST OF ANNOUNCEMENTS -->
+    <section class="announcements-list">
+      <!-- Announcement card example -->
+      <article class="announcement-card">
+        <div class="announcement-card-header">
+          <div>
+            <h3 class="announcement-card-title">Title of Announcement</h3>
+            <p class="announcement-card-meta">Date and Time of Announcement</p>
+          </div>
+
+          <button class="announcement-delete-btn" title="Delete announcement">
+            <img src="Icons/delete.png">
+            <!-- or your trash icon img/svg -->
+          </button>
+        </div>
+
+        <p class="announcement-card-message">
+          Message of the Announcement
+        </p>
+      </article>
+
+      <article class="announcement-card">
+        <div class="announcement-card-header">
+          <div>
+            <h3 class="announcement-card-title">First Announcement</h3>
+            <p class="announcement-card-meta">11/29/2025, 10:02pm</p>
+          </div>
+
+          <button class="announcement-delete-btn" title="Delete announcement">
+           <img src="Icons/delete.png">
+          </button>
+        </div>
+
+        <p class="announcement-card-message">
+          Hi, this is the first announcement.
+        </p>
+      </article>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

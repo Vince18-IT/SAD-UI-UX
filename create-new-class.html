@@ -41,8 +41,9 @@
     <!-- MAIN CONTENT -->
     <main class="create-class-main">
         <!-- back link -->
-        <a href="teacher-home.html" class="create-class-back">
-            ← Back to Dashboard
+        <a href="javascript:history.back()" class="create-class-back">
+            <img src="Icons/left-arrow.png" alt="" class="back-icon">
+            <span class="sr-only">Back to Dashboard</span>
         </a>
 
         <!-- main card -->
@@ -82,12 +83,19 @@
 
                 <!-- Buttons -->
                 <div class="create-class-actions">
-                    <a href="teacher-class-created.html"><button type="button" class="create-class-btn create-class-btn-primary">
+                    <!-- Create -->
+                    <button type="button"
+                            class="create-class-btn create-class-btn-primary"
+                            onclick="window.location.href='teacher-class-created.html'">
                         + Create New Class
-                    </button></a>
-                    <a href="teacher-home.html"><button class="create-class-btn create-class-btn-secondary">
+                    </button>
+
+                    <!-- Cancel: go back to wherever we came from -->
+                    <button type="button"
+                            class="create-class-btn create-class-btn-secondary"
+                            onclick="history.back()">
                         Cancel
-                    </button></a>
+                    </button>
                 </div>
             </form>
 

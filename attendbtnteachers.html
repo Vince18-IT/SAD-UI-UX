@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Attendance Session | SmartAttend</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- shared styles -->
+  <link rel="stylesheet" href="samedesign.css" />
+</head>
+<body>
+
+<div class="teacher-dashboard">
+
+  <!-- TOP BAR (same as other pages) -->
+  <header class="teacher-topbar">
+    <div class="teacher-topbar-left">
+      <div class="logo">
+        <img src="Icons/Logo.png" alt="SmartAttend logo" />
+        <span class="logo-text">SmartAttend</span>
+      </div>
+    </div>
+
+    <div class="teacher-topbar-right">
+      <div class="teacher-identity">
+        <span class="teacher-identity-name">Name of Teacher</span>
+        <span class="teacher-identity-role">(teacher)</span>
+      </div>
+
+      <button class="teacher-logout-btn">
+        <img src="Icons/Logout Icon.png" alt="Logout" class="logout-icon" />
+        <span class="teacher-logout-text">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="create-class-main-attendance-main">
+
+    <!-- back link -->
+    <a href="teacher-class-created.html" class="create-class-back">
+      ← Back to Dashboard
+    </a>
+
+    <!-- header -->
+    <section class="attendance-header">
+      <h1 class="attendance-title">SAD21</h1>
+      <p class="attendance-subtitle">Attendance Session Management</p>
+    </section>
+
+    <!-- two cards -->
+    <section class="attendance-grid">
+      <!-- LEFT: QR CODE -->
+      <article class="attendance-card attendance-card-primary">
+        <div>
+          <div class="attendance-card-heading">
+            <span class="attendance-icon">
+              <!-- replace with your QR icon -->
+              <img src="icons/QRcode.png" alt="QR Code" />
+            </span>
+            <h2 class="attendance-card-title">QR Code</h2>
+          </div>
+          <p class="attendance-card-text">
+            Students scan this code to request attendance
+          </p>
+        </div>
+
+        <button class="attendance-btn-primary">
+          Start Attendance Session
+        </button>
+      </article>
+
+      <!-- RIGHT: PENDING REQUEST -->
+      <article class="attendance-card attendance-card-muted">
+        <div>
+          <h2 class="attendance-card-title">Pending Request</h2>
+          <p class="attendance-card-meta">0 students waiting for approval</p>
+          <p class="attendance-card-text muted">
+            Start a session to see requests
+          </p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
