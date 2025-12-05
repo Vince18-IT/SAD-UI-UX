@@ -10,6 +10,12 @@ body {
 }
 
 
+.logout-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
 
 
 /* ========= TOP NAV ========= */
@@ -59,8 +65,6 @@ body {
     background: #dcdcdc;
     transform: translateY(-1px);
 }
-
-
 
 
 
@@ -243,6 +247,7 @@ body {
 
 .teacher-logout-icon {
     font-size: 15px;
+    
 }
 
 /* ============================
@@ -305,6 +310,8 @@ body {
    ============================ */
 
 .teacher-empty-card {
+    position: relative;
+    right: 5px;
     max-width: 450px;
     height: 260px;
     border-radius: 18px;
@@ -477,4 +484,120 @@ body {
 .create-class-btn-secondary:hover {
     background: #a9a9a9;
     transform: translateY(-1px);
+}
+
+
+#classlayout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+.classcard {
+    position: relative;
+    right: 5px;
+    height: 260px;
+    border-radius: 18px;
+    border: 2px solid rgba(15, 23, 42, 0.10);
+    background: #ffffff;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.08),
+        0 14px 35px rgba(0,0,0,0.06);
+        flex: 1 1 calc(33.33% - 30px); 
+    max-width: 450px;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+}
+
+.class-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.class-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  background: #e5e5e5;          /* light grey pill */
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* BODY TEXT */
+.classcard-body {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #9ca3af;               /* softer grey */
+}
+
+.class-code {
+  margin: 0;
+  color: #9ca3af;               /* make “Code:” grey */
+}
+
+.class-code span {
+  font-weight: 600;
+  color: #4b5563;               /* slightly darker for the code itself */
+}
+
+.class-students {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: #b3b3b3;               /* greyed out like the mock */
+}
+
+/* ICONS */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* BUTTONS */
+.classcard-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.class-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: none;
+  background: #e5e5e5;          /* flat grey */
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.class-btn:hover {
+  background: #dcdcdc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.16);
+  transform: translateY(-1px);
+}
+
+/* FULL-WIDTH BUTTON */
+.class-btn-full {
+  width: 100%;
+  margin-top: 0;
 }

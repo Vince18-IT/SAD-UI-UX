@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- shared styles -->
+    <link rel="stylesheet" href="samedesign.css">
+
+    <title>Teacher Dashboard | Classes Created</title>
+</head>
+<body>
+
+<div class="teacher-dashboard">
+
+    <!-- TOP BAR (same as teacher home) -->
+    <header class="teacher-topbar">
+        <div class="teacher-topbar-left">
+            <div class="logo">
+                <img src="Icons/Logo.png" alt="SmartAttend logo">
+                <span class="logo-text">SmartAttend</span>
+            </div>
+        </div>
+
+        <div class="teacher-topbar-right">
+            <div class="teacher-identity">
+                <span class="teacher-identity-name">Name of Teacher</span>
+                <span class="teacher-identity-role">(teacher)</span>
+            </div>
+
+            <!-- same logout style as teacher-home -->
+            <button class="teacher-logout-btn">
+                <img src="Icons/Logout Icon.png" class="logout-icon">
+                <span>Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT (same structure as teacher-home) -->
+    <main class="teacher-main">
+
+        <!-- GREETING -->
+        <section class="teacher-greeting">
+            <h1 class="teacher-greeting-title">
+                Hello, <span class="teacher-greeting-name">(Name of Teacher)</span>!
+            </h1>
+            <p class="teacher-greeting-subtitle">
+                You’re teaching <span class="teacher-greeting-count">(amount of classes)</span> classes
+            </p>
+        </section>
+
+        
+        <section class="teacher-classes">
+            <div class="teacher-classes-header">
+                <h2 class="teacher-classes-title">My Classes</h2>
+                <a href="create-new-class.html"><button class="teacher-btn-primary teacher-create-class-btn"
+                        onclick="location.href='create-new-class.html'">
+                    + Create New Class
+                </button></a>
+            </div>
+            
+
+            <div id="classlayout">
+                <div class="classcard">
+                        <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            3 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+
+                </div>
+
+                <div class="classcard">
+                    <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            1 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+                </div>
+
+                <div class="classcard">
+                    <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            1 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+                </div>
+
+            </div>
+
+            <div id="classlayout">
+                <div class="classcard">
+                        <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            0 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+
+                </div>
+
+                <div class="classcard">
+                    <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            4 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+                </div>
+
+                <div class="classcard">
+                    <div class="classcard-header">
+                            <h3 class="class-title">SAD21</h3>
+                            <span class="class-badge">Systems and Design</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="classcard-body">
+                            <p class="class-code">
+                            Code: <span>TLF5DXHM</span>
+                            </p>
+
+                            <p class="class-students">
+                            <span class="icon">
+                                <img src="/icons/reading.png" alt="Students">
+                            </span>
+                            5 student enrolled
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="classcard-actions">
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Notebook.png" alt="View">
+                            </span>
+                            <span>View</span>
+                            </button>
+
+                            <button class="class-btn">
+                            <span class="icon">
+                                <img src="/icons/Scanner.png" alt="Attend">
+                            </span>
+                            <span>Attend</span>
+                            </button>
+                        </div>
+
+                        <button class="class-btn class-btn-full">
+                            <span class="icon">
+                            <img src="/icons/VIew Records.png" alt="Records">
+                            </span>
+                            <span>View Records</span>
+                        </button>
+                </div>
+
+            </div>
+    
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
