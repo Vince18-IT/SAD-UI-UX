@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Attendance Records | SmartAttend</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- shared styles -->
+  <link rel="stylesheet" href="samedesign.css" />
+</head>
+<body>
+
+<div class="teacher-dashboard">
+
+  <!-- TOP BAR (same as other pages) -->
+  <header class="teacher-topbar">
+    <div class="teacher-topbar-left">
+      <div class="logo">
+        <img src="Icons/Logo.png" alt="SmartAttend logo" />
+        <span class="logo-text">SmartAttend</span>
+      </div>
+    </div>
+
+    <div class="teacher-topbar-right">
+      <div class="teacher-identity">
+        <span class="teacher-identity-name">Name of Teacher</span>
+        <span class="teacher-identity-role">(teacher)</span>
+      </div>
+
+      <button class="teacher-logout-btn">
+        <img src="Icons/Logout Icon.png" alt="Logout" class="logout-icon" />
+        <span class="teacher-logout-text">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="records-main">
+
+    <!-- back link -->
+    <a href="teacher-class-created.html" class="create-class-back">
+    <img src="Icons/left-arrow.png" alt="" class="back-icon">
+    <span class="sr-only">  Back to Dashboard</span>
+</a>
+
+    <!-- header -->
+    <section class="records-header">
+      <h1 class="records-title">SAD21</h1>
+      <p class="records-subtitle">Attendance Record Management</p>
+    </section>
+
+    <!-- BIG CARD -->
+    <section class="records-card">
+
+      <!-- SUMMARY STATS ROW -->
+      <div class="records-summary-row">
+
+        <!-- Total Sessions -->
+        <article class="records-summary-card">
+          <p class="records-summary-label">Total Sessions</p>
+          <div class="records-summary-value-row">
+            <span class="records-summary-value records-blue">2</span>
+            <span class="records-summary-icon">
+              <!-- your calendar icon -->
+              <img src="Icons/Calendar.png" alt="Total sessions">
+            </span>
+          </div>
+        </article>
+
+        <!-- Present -->
+        <article class="records-summary-card">
+          <p class="records-summary-label">Present</p>
+          <div class="records-summary-value-row">
+            <span class="records-summary-value records-blue">0</span>
+            <span class="records-summary-icon">
+              <!-- your check icon -->
+              <img src="Icons/check.png" alt="Present">
+            </span>
+          </div>
+        </article>
+
+        <!-- Absent -->
+        <article class="records-summary-card">
+          <p class="records-summary-label">Absent</p>
+          <div class="records-summary-value-row">
+            <span class="records-summary-value records-red">0</span>
+            <span class="records-summary-icon">
+              <!-- your X icon -->
+              <img src="Icons/X Icon.png" alt="Absent">
+            </span>
+          </div>
+        </article>
+
+        <!-- Average Attendance -->
+        <article class="records-summary-card">
+          <p class="records-summary-label">Average Attendance</p>
+          <div class="records-summary-value-row">
+            <span class="records-summary-value records-blue">0%</span>
+            <span class="records-summary-icon">
+              <!-- your attendance / people icon -->
+              <img src="Icons/Attendance.png" alt="Average attendance">
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- FILTER SECTION -->
+      <section class="records-filters">
+        <div class="records-section-title-row">
+          <span class="records-section-icon">
+            <!-- your filter icon -->
+            <img src="Icons/Filter Icon.png" alt="Filter icon">
+          </span>
+          <h2 class="records-section-title">Filter Records</h2>
+        </div>
+        <p class="records-section-subtitle">
+          Search and filter attendance records
+        </p>
+
+        <div class="records-filters-row">
+          <!-- Search student -->
+          <div class="records-field">
+            <label for="searchStudent">Search Student</label>
+            <input id="searchStudent" type="text" placeholder="Search by name..." />
+          </div>
+
+          <!-- Session select -->
+          <div class="records-field">
+            <label for="sessionFilter">Session</label>
+            <select id="sessionFilter">
+              <option>All Sessions</option>
+              <!-- later: <option>Session 1</option> etc -->
+            </select>
+          </div>
+
+          <!-- Status select -->
+          <div class="records-field">
+            <label for="statusFilter">Status</label>
+            <select id="statusFilter">
+              <option>All Status</option>
+              <option>Present</option>
+              <option>Absent</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECORDS TABLE / LIST -->
+      <section class="records-table">
+        <div class="records-section-title-row">
+          <span class="records-section-icon">
+            <!-- attendance records icon -->
+            <img src="Icons/VIew Records.png" alt="Attendance records">
+          </span>
+          <h2 class="records-section-title">Attendance Records</h2>
+        </div>
+        <p class="records-section-subtitle">
+          Showing 0 records
+        </p>
+
+        <!-- For now just an empty-state area -->
+        <div class="records-table-empty">
+          No attendance records yet.
+        </div>
+      </section>
+
+    </section>
+
+  </main>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.teacher-logout-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();          // stop any default link/button behavior
+        window.location.href = 'index.html';  // redirect to your home page
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

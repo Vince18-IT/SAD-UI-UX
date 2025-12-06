@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- shared design -->
+  <link rel="stylesheet" href="samedesign.css">
+
+  <title>Student Dashboard | SmartAttend</title>
+</head>
+<body>
+
+<div class="teacher-dashboard student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="teacher-topbar">
+    <div class="teacher-topbar-left">
+      <div class="logo">
+        <img src="Icons/Logo.png" alt="SmartAttend logo">
+        <span class="logo-text">SmartAttend</span>
+      </div>
+    </div>
+
+    <div class="teacher-topbar-right">
+      <div class="teacher-identity">
+        <span class="teacher-identity-name">Name of Student</span>
+        <span class="teacher-identity-role">(student)</span>
+      </div>
+
+      <button class="teacher-logout-btn">
+        <img src="Icons/Logout Icon.png" class="logout-icon" alt="Logout">
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="teacher-main student-main">
+
+    <!-- GREETING -->
+    <section class="teacher-greeting student-greeting">
+      <h1 class="teacher-greeting-title">
+        Hello, <span class="teacher-greeting-name">Name of Student</span>!
+      </h1>
+      <p class="teacher-greeting-subtitle">
+        You’re enrolled in <span class="teacher-greeting-count">1</span> class
+      </p>
+    </section>
+
+
+    <!-- ACTIVE ATTENDANCE SESSIONS (hidden by default, shown via JS) -->
+          <section class="student-active-section" id="studentActiveSection">
+            <div class="student-active-header">
+              <!-- blue QR / sessions icon -->
+              <span class="student-active-icon">
+                <img src="Icons/QR_Blue-removebg-preview.png" alt="Active sessions icon">
+              </span>
+              <h2 class="student-active-title">Active Attendance Sessions</h2>
+            </div>
+
+            <article class="student-active-card">
+              <div class="student-active-card-top">
+                <div>
+                  <p class="student-active-class-name">SAD21</p>
+
+                  <p class="student-active-meta">
+                    <img src="Icons/icons8-time-50.png" alt="" class="student-active-clock-icon">
+                    <span>Expires in 15:00</span>
+                  </p>
+                </div>
+
+                <span class="student-active-badge">Active</span>
+              </div>
+
+              <button class="student-active-scan-btn">
+                <!-- QR icon **for button** -->
+                <img src="Icons/QR_Blue-removebg-preview.png" alt="" class="student-active-scan-icon">
+                <span>Scan QR Code</span>
+              </button>
+            </article>
+          </section>
+
+
+    <!-- TWO-COLUMN LAYOUT (same as empty state) -->
+    <section class="student-layout">
+
+      <!-- LEFT: MY CLASSES -->
+      <div class="student-column">
+        <div class="student-panel-header">
+          <h2 class="student-panel-title">My Classes</h2>
+
+          <a href="student-join-class.html">
+                        <button class="teacher-btn-primary student-join-class-btn">
+                        + Join Class
+                    </button>
+                    </a>
+        </div>
+
+        <!-- CLASS CARD (joined) -->
+        <article class="student-class-card">
+          <header class="student-class-card-header">
+            <div>
+              <h3 class="student-class-name">SAD21</h3>
+              <p class="student-class-teacher">
+                Teacher: Name of Teacher
+              </p>
+            </div>
+
+            <span class="student-class-tag">
+              Systems and Design
+            </span>
+          </header>
+
+          <p class="student-class-description">
+            Description of Class
+          </p>
+        </article>
+      </div>
+
+      <!-- RIGHT: RECENT ANNOUNCEMENTS -->
+      <div class="student-column">
+        <div class="student-panel-header">
+          <h2 class="student-panel-title">Recent Announcements</h2>
+        </div>
+
+        <!-- ANNOUNCEMENT CARD -->
+        <article class="student-announcement-card">
+          <header class="student-announcement-header">
+            <div>
+              <h3 class="student-announcement-title">First Announcement</h3>
+              <p class="student-announcement-meta">
+                SAD21 • 11/29/2025
+              </p>
+            </div>
+
+            <span class="student-announcement-badge">
+              New
+            </span>
+          </header>
+
+          <p class="student-announcement-body">
+            Hi, this is the first announcement.
+          </p>
+        </article>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+  <!-- MODALS: Location → Scan → Success -->
+  <div class="modal-overlay" id="scanModalOverlay">
+    
+    <!-- Modal 1: Location Permission -->
+    <div class="modal-panel" id="modalLocation">
+      <!-- big location icon (swap src with your asset) -->
+      <img src="Icons/GPS.png" alt="Location icon" class="modal-icon-large">
+
+      <h2 class="modal-title">Location Permission Requirement</h2>
+
+      <p class="modal-text">
+        Granting the privilege to access your location enables the SmartAttend functionality.
+      </p>
+      <p class="modal-text-small">
+        Please allow us to access your location service.
+      </p>
+
+      <div class="modal-actions">
+        <button class="modal-btn-primary" id="btnEnableLocation">
+          Enable Location
+        </button>
+        <button class="modal-btn-secondary" id="btnLocationNotNow">
+          Not Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 2: Scan QR Attendance -->
+    <div class="modal-panel" id="modalScan">
+      <!-- blue QR icon (small) -->
+      <img src="Icons/QR_Blue-removebg-preview.png" alt="QR icon" class="modal-icon-small">
+
+      <h2 class="modal-title">Scan QR Attendance</h2>
+
+      <!-- big QR image -->
+      <img src="Icons/QRcode.png" alt="QR code" class="modal-qr-preview">
+
+      <div class="modal-timer-row">
+        <span class="modal-timer-label">Remaining Time:</span>
+        <span class="modal-timer-value" id="scanModalTimer">15:00</span>
+      </div>
+
+      <div class="modal-actions">
+        <button class="modal-btn-success" id="btnScanConfirm">
+          Scan
+        </button>
+        <button class="modal-btn-danger" id="btnScanClose">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 3: Scan Success -->
+    <div class="modal-panel" id="modalSuccess">
+      <!-- blue QR icon again for consistency -->
+      <img src="Icons/QR_Blue-removebg-preview.png" alt="QR icon" class="modal-icon-small">
+
+      <h2 class="modal-title">Scan QR Attendance</h2>
+
+      <!-- big green check -->
+      <img src="Icons/check-iconn.png" alt="Success" class="modal-success-icon">
+
+      <p class="modal-text">
+        Successfully Scanned QR Code
+      </p>
+
+      <div class="modal-actions">
+        <button class="modal-btn-primary" id="btnReturnHome">
+          Return to Homepage
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ========= ACTIVE SECTION VISIBILITY ========= */
+    const activeSection = document.getElementById('studentActiveSection');
+    const scanBtn       = document.querySelector('.student-active-scan-btn');
+
+    function refreshActiveUI() {
+      const hasActive = localStorage.getItem('hasActiveAttendanceSession') === 'true';
+      if (!activeSection) return;
+
+      if (hasActive) {
+        activeSection.classList.add('is-visible');
+      } else {
+        activeSection.classList.remove('is-visible');
+      }
+    }
+
+    /* ========= MODAL ELEMENTS ========= */
+    const overlay        = document.getElementById('scanModalOverlay');
+
+    const modalLocation  = document.getElementById('modalLocation');
+    const modalScan      = document.getElementById('modalScan');
+    const modalSuccess   = document.getElementById('modalSuccess');
+
+    const btnEnableLoc   = document.getElementById('btnEnableLocation');
+    const btnLocNotNow   = document.getElementById('btnLocationNotNow');
+
+    const btnScanConfirm = document.getElementById('btnScanConfirm');
+    const btnScanClose   = document.getElementById('btnScanClose');
+
+    const btnReturnHome  = document.getElementById('btnReturnHome');
+    const scanTimerEl    = document.getElementById('scanModalTimer');
+
+    function hideAllPanels() {
+      if (!modalLocation || !modalScan || !modalSuccess) return;
+      modalLocation.style.display = 'none';
+      modalScan.style.display     = 'none';
+      modalSuccess.style.display  = 'none';
+    }
+
+    function openOverlay() {
+      if (!overlay) return;
+      overlay.classList.add('is-open');
+    }
+
+    function closeOverlay() {
+      if (!overlay) return;
+      overlay.classList.remove('is-open');
+      hideAllPanels();
+    }
+
+    /* ======= helper: sync timer with teacher page (if using it) ======= */
+    function updateScanModalTimer() {
+      if (!scanTimerEl) return;
+
+      const endRaw = localStorage.getItem('attendanceSessionEndTime');
+      if (!endRaw) {
+        scanTimerEl.textContent = '15:00';
+        return;
+      }
+
+      const endTime   = Number(endRaw);
+      const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+      const mins = String(Math.floor(remaining / 60)).padStart(2, '0');
+      const secs = String(remaining % 60).padStart(2, '0');
+      scanTimerEl.textContent = `${mins}:${secs}`; 
+    }
+
+    /* ========= CLICK: Scan QR Code (card button) ========= */
+    if (scanBtn) {
+      scanBtn.addEventListener('click', () => {
+        const hasActive = localStorage.getItem('hasActiveAttendanceSession') === 'true';
+
+        if (!hasActive) {
+          // If there is NO active session we just tell the user.
+          // (no QR / modal because teacher hasn't started yet)
+          alert('There is no active attendance session right now.');
+          return;
+        }
+
+        // There IS an active session → start modal flow at "Location"
+        hideAllPanels();
+        if (modalLocation) modalLocation.style.display = 'block';
+        openOverlay();
+      });
+    }
+
+    /* ========= MODAL 1: Location Permission ========= */
+    if (btnEnableLoc) {
+      btnEnableLoc.addEventListener('click', () => {
+        // Normally you'd request geolocation here.
+        // For now we just move to the Scan modal.
+        hideAllPanels();
+        if (modalScan) modalScan.style.display = 'block';
+        updateScanModalTimer();
+      });
+    }
+
+    if (btnLocNotNow) {
+      btnLocNotNow.addEventListener('click', () => {
+        closeOverlay();
+      });
+    }
+
+    /* ========= MODAL 2: Scan QR Attendance ========= */
+    if (btnScanConfirm) {
+      btnScanConfirm.addEventListener('click', () => {
+        // Mark in localStorage so the teacher's page sees the request
+        localStorage.setItem('studentRequestedAttendance', 'true');
+
+        hideAllPanels();
+        if (modalSuccess) modalSuccess.style.display = 'block';
+      });
+    }
+
+    if (btnScanClose) {
+      btnScanClose.addEventListener('click', () => {
+        closeOverlay();
+      });
+    }
+
+    /* ========= MODAL 3: Scan Success ========= */
+    if (btnReturnHome) {
+      btnReturnHome.addEventListener('click', () => {
+        // Just close the overlay; page underneath is the "homepage"
+        closeOverlay();
+      });
+    }
+
+    /* ========= INITIAL STATE + STORAGE LISTENER ========= */
+    refreshActiveUI();
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'hasActiveAttendanceSession') {
+        refreshActiveUI();
+      }
+    });
+  });
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.teacher-logout-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();          // stop any default link/button behavior
+        window.location.href = 'index.html';  // redirect to your home page
+      });
+    });
+  });
+
+</script>
+
+
+
+</body>
+</html>

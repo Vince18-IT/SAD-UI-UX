@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS (reuse same file as student sign up) -->
+    <link rel="stylesheet" href="student-signup.css">
+
+    <title>Student Login</title>
+</head>
+<body>
+
+    <!-- use the login wrapper so it sits a bit lower like the teacher login -->
+    <div class="page-wrapper_login">
+
+        <!-- back to landing / home -->
+        <a href="get-started.html" id="back-linklogin" class="back-link">← Back to Home</a>
+
+        <!-- main login card -->
+        <div class="signup-card login-card">
+
+            <h2>Student Login</h2>
+            <p>Enter your credentials to access your student dashboard</p>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email">
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password">
+            </div>
+
+            <!-- after login, send them to the student dashboard (adjust href later) -->
+            <a href="student-dashboard.html">
+                <button class="btn-primary">Login</button>
+            </a>
+
+            <div class="bottom-text">
+                Don’t have an account? <a href="student-signup.html">Sign Up</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

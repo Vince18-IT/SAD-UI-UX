@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- shared styles -->
+  <link rel="stylesheet" href="samedesign.css">
+
+  <title>Join a Class | SmartAttend</title>
+</head>
+<body>
+
+<div class="teacher-dashboard student-dashboard">
+
+  <!-- TOP BAR (same as student dashboard) -->
+  <header class="teacher-topbar">
+    <div class="teacher-topbar-left">
+      <div class="logo">
+        <img src="Icons/Logo.png" alt="SmartAttend logo">
+        <span class="logo-text">SmartAttend</span>
+      </div>
+    </div>
+
+    <div class="teacher-topbar-right">
+      <div class="teacher-identity">
+        <span class="teacher-identity-name">Name of Student</span>
+        <span class="teacher-identity-role">(student)</span>
+      </div>
+
+      <button class="teacher-logout-btn">
+        <img src="Icons/Logout Icon.png" class="logout-icon" alt="Logout">
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="join-class-main">
+
+    <!-- back link -->
+    <a href="javascript:history.back()" class="join-class-back">
+            <img src="Icons/left-arrow.png" alt="" class="back-icon">
+            <span class="sr-only">Back to Dashboard</span>
+        </a>
+
+    <!-- JOIN CLASS CARD -->
+    <section class="join-class-card">
+      <header class="join-class-header">
+        <div class="join-class-icon">
+          <!-- use your QR / scanner icon -->
+          <img src="Icons/QRcode.png" alt="Join a class icon">
+        </div>
+        <div>
+          <h1 class="join-class-title">Join a Class</h1>
+          <p class="join-class-subtitle">
+            Enter the class code provided by your teacher to join a class
+          </p>
+        </div>
+      </header>
+
+      <form class="join-class-form">
+        <div class="join-class-group">
+          <label for="classCode">Class Code</label>
+          <input
+            id="classCode"
+            type="text"
+            maxlength="8"
+            placeholder="Enter 8-digit code..."
+          >
+          <p class="join-class-helper">
+            The code is case-insensitive and should be 8 characters long
+          </p>
+        </div>
+
+        <button type="button" onclick="window.location.href='student-dashboard-joined.html'" class="join-class-btn">
+          Join Class
+        </button>
+        
+      </form>
+    </section>
+
+  </main>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.teacher-logout-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();          // stop any default link/button behavior
+        window.location.href = 'index.html';  // redirect to your home page
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

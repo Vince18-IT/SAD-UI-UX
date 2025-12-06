@@ -103,10 +103,13 @@
       <article class="attendance-card attendance-card-muted">
         <div>
           <h2 class="attendance-card-title">Pending Request</h2>
-          <p class="attendance-card-meta">0 students waiting for approval</p>
-          <p class="attendance-card-text muted">
-            Start a session to see requests
-          </p>
+          <p id="pending-count" class="attendance-card-meta">
+  0 students waiting for approval
+</p>
+<p id="pending-helper" class="attendance-card-text muted">
+  Start a session to see requests
+</p>
+
         </div>
       </article>
     </section>
@@ -117,25 +120,177 @@
 </body>
 
 <script>
-  const mainEl = document.querySelector('.create-class-main-attendance-main');
-  const startBtn = document.getElementById('start-session-btn');
-  const closeBtn = document.getElementById('close-session-btn');
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainEl        = document.querySelector('.create-class-main-attendance-main');
+    const startBtn      = document.getElementById('start-session-btn');
+    const closeBtn      = document.getElementById('close-session-btn');
+    const timerEl       = document.getElementById('qr-timer-value');
+    const pendingCount  = document.getElementById('pending-count');
+    const pendingHelper = document.getElementById('pending-helper');
 
-  if (startBtn) {
-    startBtn.addEventListener('click', () => {
-      // turn ON session ⇒ show big QR + timer
+    const SESSION_DURATION = 15 * 60; // 15 minutes in seconds
+    let timerInterval = null;
+
+    /* ---------------- localStorage helpers ---------------- */
+
+    function setSessionActive(isActive) {
+      if (isActive) {
+        // mark active + store when it should end
+        localStorage.setItem('hasActiveAttendanceSession', 'true');
+        const endTime = Date.now() + SESSION_DURATION * 1000;
+        localStorage.setItem('attendanceSessionEndTime', String(endTime));
+      } else {
+        localStorage.removeItem('hasActiveAttendanceSession');
+        localStorage.removeItem('studentRequestedAttendance');
+        localStorage.removeItem('attendanceSessionEndTime');
+      }
+    }
+
+    function getRemainingSeconds() {
+      const endRaw = localStorage.getItem('attendanceSessionEndTime');
+      if (!endRaw) return 0;
+      const endTime = Number(endRaw);
+      if (Number.isNaN(endTime)) return 0;
+      const diffMs = endTime - Date.now();
+      return Math.max(0, Math.floor(diffMs / 1000));
+    }
+
+    function formatAndSetTimer(remainingSeconds) {
+      const mins = String(Math.floor(remainingSeconds / 60)).padStart(2, '0');
+      const secs = String(remainingSeconds % 60).padStart(2, '0');
+      if (timerEl) {
+        timerEl.textContent = `${mins}:${secs}`;
+      }
+    }
+
+    function refreshPendingUI() {
+      const hasActive  = localStorage.getItem('hasActiveAttendanceSession') === 'true';
+      const hasRequest = localStorage.getItem('studentRequestedAttendance') === 'true';
+
+      if (!pendingCount || !pendingHelper) return;
+
+      if (!hasActive) {
+        pendingCount.textContent  = '0 students waiting for approval';
+        pendingHelper.textContent = 'Start a session to see requests';
+        return;
+      }
+
+      if (hasRequest) {
+        pendingCount.textContent  = '1 student waiting for approval';
+        pendingHelper.textContent = 'A student has requested attendance.';
+      } else {
+        pendingCount.textContent  = '0 students waiting for approval';
+        pendingHelper.textContent = 'Waiting for students to scan the QR code';
+      }
+    }
+
+    /* ---------------- timer logic ---------------- */
+
+    function startTimerLoop() {
+      if (timerInterval) clearInterval(timerInterval);
+
+      // initial display based on whatever is in localStorage
+      const initialRemaining = getRemainingSeconds();
+      if (initialRemaining <= 0) {
+        formatAndSetTimer(0);
+        handleCloseSession();
+        return;
+      }
+      formatAndSetTimer(initialRemaining);
+
+      timerInterval = setInterval(() => {
+        const remaining = getRemainingSeconds();
+
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          handleCloseSession(); // auto-close when time runs out
+          return;
+        }
+
+        formatAndSetTimer(remaining);
+      }, 1000);
+    }
+
+    /* ---------------- UI handlers ---------------- */
+
+    function handleStartSession() {
+      if (!mainEl) return;
       mainEl.classList.add('session-on');
-    });
-  }
+      setSessionActive(true);
+      startTimerLoop();
+      refreshPendingUI();
+    }
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      // turn OFF session ⇒ go back to blue button
+    function handleCloseSession() {
+      if (!mainEl) return;
+
       mainEl.classList.remove('session-on');
-      // optional: reset timer text
-      document.getElementById('qr-timer-value').textContent = '15:00';
+
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+
+      if (timerEl) timerEl.textContent = '15:00';
+      setSessionActive(false);
+      refreshPendingUI();
+    }
+
+    /* ---------------- event wiring ---------------- */
+
+    if (startBtn) {
+      startBtn.addEventListener('click', handleStartSession);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', handleCloseSession);
+    }
+
+    // Restore state if session was already active (same browser)
+    if (localStorage.getItem('hasActiveAttendanceSession') === 'true') {
+      if (mainEl) {
+        mainEl.classList.add('session-on');
+      }
+
+      const remaining = getRemainingSeconds();
+      if (remaining > 0) {
+        formatAndSetTimer(remaining);
+        startTimerLoop();
+      } else {
+        // timer already expired while page was closed
+        handleCloseSession();
+      }
+    } else if (timerEl) {
+      // default display when no session
+      timerEl.textContent = '15:00';
+    }
+
+    refreshPendingUI();
+
+    // If the student tab writes to localStorage, update the pending card
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'studentRequestedAttendance' ||
+          event.key === 'hasActiveAttendanceSession') {
+        refreshPendingUI();
+      }
     });
-  }
+  });
+
+
+
+ 
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.teacher-logout-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();          // stop any default link/button behavior
+        window.location.href = 'index.html';  // redirect to your home page
+      });
+    });
+  });
+
+
 </script>
+
 
 </html>

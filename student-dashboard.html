@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- shared design file -->
+    <link rel="stylesheet" href="samedesign.css">
+
+    <title>Student Dashboard | SmartAttend</title>
+</head>
+<body>
+
+<div class="teacher-dashboard student-dashboard"><!-- reuse same shell -->
+
+    <!-- TOP BAR (same style as teacher) -->
+    <header class="teacher-topbar">
+        <div class="teacher-topbar-left">
+            <div class="logo">
+                <img src="Icons/Logo.png" alt="SmartAttend logo">
+                <span class="logo-text">SmartAttend</span>
+            </div>
+        </div>
+
+        <div class="teacher-topbar-right">
+            <div class="teacher-identity">
+                <span class="teacher-identity-name">Name of Student</span>
+                <span class="teacher-identity-role">(student)</span>
+            </div>
+
+            <button class="teacher-logout-btn">
+                <img src="Icons/Logout Icon.png" class="logout-icon" alt="Logout">
+                <span>Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="teacher-main student-main">
+
+        <!-- GREETING -->
+        <section class="teacher-greeting student-greeting">
+            <h1 class="teacher-greeting-title">
+                Hello, <span class="teacher-greeting-name">Name of Student</span>!
+            </h1>
+            <p class="teacher-greeting-subtitle">
+                You’re enrolled in <span class="teacher-greeting-count">(amount of classes)</span> classes
+            </p>
+        </section>
+
+        <!-- TWO-COLUMN LAYOUT -->
+        <section class="student-layout">
+
+            <!-- LEFT: MY CLASSES -->
+            <div class="student-column">
+                <div class="student-panel-header">
+                    <h2 class="student-panel-title">My Classes</h2>
+                    
+                    <a href="student-join-class.html">
+                        <button class="teacher-btn-primary student-join-class-btn">
+                        + Join Class
+                    </button>
+                    </a>
+                </div>
+
+                <div class="student-panel-card student-panel-card-empty">
+                    <div class="student-empty-icon">
+                        <img src="Icons/empty-book.png" alt="No classes icon">
+                    </div>
+                    <p class="student-empty-main-text">
+                        You haven’t joined any classes yet
+                    </p>
+                    <button class="teacher-btn-primary student-first-class-btn">
+                        Join Your First Class
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT: RECENT ANNOUNCEMENTS -->
+            <div class="student-column">
+                <div class="student-panel-header">
+                    <h2 class="student-panel-title">Recent Announcements</h2>
+                </div>
+
+                <div class="student-panel-card student-panel-card-empty">
+                    <div class="student-empty-icon">
+                        <img src="Icons/Notif Icon.png" alt="No announcements icon">
+                    </div>
+                    <p class="student-empty-main-text">
+                        No announcement yet
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.teacher-logout-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();          // stop any default link/button behavior
+        window.location.href = 'index.html';  // redirect to your home page
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

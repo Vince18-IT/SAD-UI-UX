@@ -36,6 +36,8 @@ body {
    
 }
 
+
+
 #signup-logo img {
     position: relative;
     top: 4px;
@@ -49,21 +51,39 @@ body {
 }
 
 .nav-btn {
-    padding: 8px 22px;        /* smaller buttons */
-    border-radius: 999px;     
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 8px 22px;
+    border-radius: 999px;
+
+    background: #ffffff;           /* white pill like logout */
+    color: #1A73E8;                /* same blue text */
+    border: none;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+
     text-decoration: none;
-    font-size: 14px;          /* slightly smaller text */
+    font-size: 14px;
     font-weight: 600;
-    background: #e6e6e6;
-    color: #2575fc;
-    display: inline-block;
-    transition: 0.2s ease;
-    margin-left: 12px; 
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+
+    margin-left: 12px;             /* keep your original spacing */
 }
 
 .nav-btn:hover {
-    background: #dcdcdc;
-    transform: translateY(-1px);
+    background: #f3f4ff;           /* subtle hover tint */
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
+    transform: translateX(-1px);
+}
+
+/* tiny arrow icon inside the button */
+.nav-btn-icon {
+    height: 14px;
+    width: 14px;
+    object-fit: contain;
 }
 
 
@@ -1034,4 +1054,903 @@ body {
   background: #dc2626;
   box-shadow: 0 12px 22px rgba(239, 68, 68, 0.45);
   transform: translateY(-1px);
+}
+
+
+.records-main {
+  min-height: calc(100vh - 68px);
+  background: #ffffff;
+  padding: 40px 80px 60px;
+}
+
+/* Back link (reuse style from other pages) */
+.records-main .create-class-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+  margin-bottom: 0px;
+  position: relative;
+  left: -5px;
+}
+
+
+
+.records-header {
+  position: relative;
+  left: 5px;
+  margin-bottom: 18px;
+}
+
+.records-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.records-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Big outer card */
+.records-card {
+  margin-top: 8px;
+  border-radius: 18px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+  padding: 24px 28px 30px;
+}
+
+/* ============================
+   SUMMARY CARDS
+   ============================ */
+
+.records-summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+/* card that holds each stat */
+.records-summary-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 18px 16px 18px;
+  min-height: 100px;
+  padding-right: 56px;          /* space on the right for the icon */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+  position: relative;           /* needed for absolute icon placement */
+}
+
+.records-summary-label {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* row with the big number only now */
+.records-summary-value-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.records-summary-value {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.records-blue {
+  color: #1a73e8;
+}
+
+.records-red {
+  color: #ef4444;
+}
+
+/* icon positioned like the reference (right, vertically centered) */
+.records-summary-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.records-summary-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* ============================
+   SECTION TITLES (Filter + Table)
+   ============================ */
+
+.records-section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.records-section-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.records-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.records-section-subtitle {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0 0 14px;
+}
+
+/* ============================
+   FILTERS
+   ============================ */
+
+.records-filters {
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.records-filters-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.records-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.records-field input,
+.records-field select {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f3f4f6;
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.records-field input::placeholder {
+  color: #9ca3af;
+}
+
+.records-field input:focus,
+.records-field select:focus {
+  border-color: #1a73e8;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.14);
+}
+
+/* ============================
+   ATTENDANCE RECORDS TABLE / LIST
+   ============================ */
+
+.records-table {
+  margin-top: 10px;
+}
+
+.records-table-empty {
+  margin-top: 10px;
+  padding: 16px 14px;
+  border-radius: 10px;
+  border: 1px dashed #d1d5db;
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  background: #f9fafb;
+}
+
+/* (optional) make it responsive */
+@media (max-width: 960px) {
+  .records-main {
+    padding: 32px 20px 40px;
+  }
+
+  .records-summary-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .records-filters-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/************************************
+  STUDENT DASHBOARD
+************************************/
+
+/* layout that holds "My Classes" and "Recent Announcements" */
+.student-layout {
+  display: flex;
+  gap: 32px;
+  margin-top: 10px;
+  max-width: 1100px;
+}
+
+/* each column (left/right) */
+.student-column {
+  flex: 1 1 0;
+}
+
+/* headers above the panels */
+.student-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  /* keep both headers same height so cards align */
+  min-height: 40px; /* same as join button height */
+}
+
+.student-panel-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* + Join Class button (blue pill, no underline) */
+a.student-join-class-btn {
+  padding: 8px 22px;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.student-join-class-btn:hover,
+a.student-join-class-btn:focus {
+  text-decoration: none;
+}
+
+/* ===========================
+   SHARED CARD STYLE
+   (empty + joined)
+   =========================== */
+
+/* All student cards share the same soft container style */
+.student-panel-card,
+.student-class-card,
+.student-announcement-card {
+  border-radius: 22px;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  padding: 22px 24px 24px;
+  min-height: 260px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* empty-state cards: center content */
+.student-panel-card {
+  align-items: center;
+  justify-content: center;
+}
+
+/* joined-state cards: top-left aligned content */
+.student-class-card,
+.student-announcement-card {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* empty-state icon */
+.student-empty-icon img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+/* empty-state text */
+.student-empty-main-text {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+/* blue CTA button inside empty panel */
+.student-first-class-btn {
+  padding-inline: 26px;
+}
+
+/* responsive for dashboard */
+@media (max-width: 960px) {
+  .student-layout {
+    flex-direction: column;
+    max-width: 100%;
+  }
+}
+
+
+/************************************
+  STUDENT – JOIN CLASS PAGE
+************************************/
+.join-class-main {
+  min-height: calc(100vh - 68px);
+  background: #ffffff;
+  padding: 40px 80px 60px;
+}
+
+/* Back link – positioned a bit down & to the left */
+.join-class-back {
+  position: relative;
+  left: 220px;
+  top: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #6b7280;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.join-class-back:hover {
+  transform: translateX(-1px);
+}
+
+/* Main card – same soft style as the other cards */
+.join-class-card {
+  max-width: 780px;
+  margin: 60px auto 0;
+  border-radius: 22px;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  padding: 28px 32px 32px;
+  min-height: 260px;
+}
+
+/* header inside card */
+.join-class-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.join-class-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.join-class-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.join-class-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* form */
+.join-class-form {
+  margin-top: 4px;
+}
+
+.join-class-group {
+  margin-bottom: 16px;
+}
+
+.join-class-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* input styling */
+.join-class-group input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+  background: #f9fafb;
+}
+
+.join-class-group input::placeholder {
+  color: #9ca3af;
+}
+
+.join-class-group input:focus {
+  border-color: #1a73e8;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.16);
+}
+
+/* helper text */
+.join-class-helper {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* primary button – same pill energy as other pages */
+.join-class-btn {
+  display: block;
+  margin: 20px auto 0;
+  min-width: 230px;
+  height: 42px;
+  border-radius: 999px;
+  border: none;
+  background: #1A73E8;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(26, 115, 232, 0.40);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.join-class-btn:hover {
+  background: #1666d3;
+  box-shadow: 0 14px 26px rgba(26, 115, 232, 0.45);
+  transform: translateY(-1px);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .join-class-main {
+    padding: 32px 20px 40px;
+  }
+
+  .join-class-back,
+  .join-class-card {
+    max-width: 100%;
+  }
+
+  .join-class-card {
+    padding-inline: 20px;
+  }
+}
+
+
+/************************************
+  STUDENT DASHBOARD – JOINED STATE
+  (class & announcement cards)
+************************************/
+
+/* ---------- CLASS CARD CONTENT ---------- */
+
+.student-class-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;        /* center tag with title vertically */
+  gap: 12px;
+  margin-bottom: 14px;        /* more space below the header */
+}
+
+.student-class-name {
+  font-size: 20px;            /* bigger, more prominent */
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.student-class-teacher {
+  font-size: 14px;            /* easier to read */
+  color: #6b7280;
+  margin: 0;
+}
+
+/* “Systems and Design” pill */
+.student-class-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: #e5e5e5;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.student-class-description {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 14px;
+  line-height: 1.5;
+  max-width: 80%;             /* keeps text from stretching too wide */
+}
+
+/* ---------- ANNOUNCEMENT CARD CONTENT ---------- */
+
+.student-announcement-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;        /* align "NEW" with title block */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.student-announcement-title {
+  font-size: 20px;            /* match class name size */
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.student-announcement-meta {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* "NEW" badge */
+.student-announcement-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #111827;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.student-announcement-body {
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 14px;
+  line-height: 1.6;
+  max-width: 85%;
+}
+
+
+/************************************
+  STUDENT – ACTIVE ATTENDANCE SESSIONS
+************************************/
+
+/* hidden by default; JS toggles .is-visible */
+.student-active-section {
+  display: none;
+  margin-top: 26px;
+  margin-bottom: 24px;
+}
+
+.student-active-section.is-visible {
+  display: block;
+}
+
+/* header row: icon + big title */
+.student-active-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.student-active-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.student-active-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* main card – same soft vibe but a slightly stronger border */
+.student-active-card {
+  border-radius: 22px;
+  border: 2px solid rgba(15, 23, 42, 0.10);
+  background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+ box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.08),
+    0 14px 35px rgba(0, 0, 0, 0.06);
+  padding: 20px 24px 24px;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* top row: class name + badge */
+.student-active-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.student-active-class-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+/* clock + expires text */
+.student-active-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.student-active-clock-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* green "Active" pill on the right */
+.student-active-badge {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Scan QR Code button – full width, round corners, glowing blue */
+.student-active-scan-btn {
+  margin-top: 6px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #1a73e8 0%, #0057d8 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.08),
+    0 14px 35px rgba(0, 0, 0, 0.06);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.student-active-scan-btn:hover {
+  background: linear-gradient(180deg, #1f7df3 0%, #0a5bdc 100%);
+  box-shadow: 0 18px 36px rgba(26, 115, 232, 0.55);
+  transform: translateY(-1px);
+}
+
+.student-active-scan-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* responsive */
+@media (max-width: 960px) {
+  .student-active-card {
+    max-width: 100%;
+  }
+}
+
+
+/************************************
+  MODALS – STUDENT QR FLOW
+************************************/
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(2px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+/* base panel */
+.modal-panel {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 40px 28px;
+  max-width: 430px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  display: none;
+}
+
+.modal-panel.is-active {
+  display: block;
+}
+
+/* icons & text */
+.modal-icon-large {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 16px;
+  object-fit: contain;
+}
+
+.modal-icon-small {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 16px;
+  object-fit: contain;
+}
+
+.modal-qr-preview {
+  width: 190px;
+  height: 190px;
+  margin: 4px auto 16px;
+  object-fit: contain;
+}
+
+.modal-success-icon {
+  width: 190px;
+  height: 190px;
+  margin: 4px auto 18px;
+  object-fit: contain;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.modal-text {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+.modal-text-small {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0 0 14px;
+}
+
+/* timer row in Scan modal */
+.modal-timer-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4b5563;
+  margin: 4px 0 12px;
+}
+
+.modal-timer-label {
+  font-weight: 500;
+}
+
+.modal-timer-value {
+  font-weight: 600;
+}
+
+/* buttons */
+.modal-actions {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-btn-primary,
+.modal-btn-secondary,
+.modal-btn-success,
+.modal-btn-danger {
+  width: 100%;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease,
+              box-shadow 0.15s ease,
+              transform 0.1s ease;
+}
+
+/* blue primary */
+.modal-btn-primary {
+  background: #1A73E8;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(26, 115, 232, 0.4);
+}
+
+.modal-btn-primary:hover {
+  background: #1666d3;
+  box-shadow: 0 14px 26px rgba(26, 115, 232, 0.5);
+  transform: translateY(-1px);
+}
+
+/* grey secondary */
+.modal-btn-secondary {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.modal-btn-secondary:hover {
+  background: #d1d5db;
+}
+
+/* green Scan */
+.modal-btn-success {
+  background: #22c55e;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(34, 197, 94, 0.35);
+}
+
+.modal-btn-success:hover {
+  background: #16a34a;
+  box-shadow: 0 14px 26px rgba(34, 197, 94, 0.45);
+  transform: translateY(-1px);
+}
+
+/* red Close */
+.modal-btn-danger {
+  background: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(239, 68, 68, 0.35);
+}
+
+.modal-btn-danger:hover {
+  background: #dc2626;
+  box-shadow: 0 14px 26px rgba(239, 68, 68, 0.45);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .modal-panel {
+    padding-inline: 22px;
+  }
 }
