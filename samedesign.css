@@ -800,15 +800,14 @@ body {
 
 
 
-
-
 /************************************
   ATTENDANCE PAGE (attendbtnteachers.html)
 ************************************/
 
 .create-class-main-attendance-main .create-class-back{
     position: relative; 
-    left: 50px;           
+    top: 70px;
+    left: 145px;           
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -825,12 +824,12 @@ body {
   padding: 40px 72px 60px;
 }
 
-
-
-/* Header (SAD21 + subtitle) */
+/* Header */
 .attendance-header {
-  max-width: 1000px;             /* same width as cards */
-  margin: 120px auto 24px;         /* centered block */
+  max-width: 1000px;
+  position: relative;
+  top: 70px;
+  left: 160px;  
 }
 
 .attendance-title {
@@ -843,77 +842,89 @@ body {
   font-size: 14px;
   color: #9ca3af;
 }
-/* Two cards side by side */
+
+/* Two cards */
 .attendance-grid {
+  position: relative;
+  top: 100px;
+  left: 150px;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;  
   gap: 32px;
   max-width: 1000px;
-  margin: 10px auto;                /* center the cards block */
 }
 
-/* Base card style */
+/* Base card */
 .attendance-card {  
-  flex: 1 1 0;
   border-radius: 18px;
-  border: 2px solid #000;
+  border: 1px solid #d1d5db;
+  box-shadow:
+        0 8px 18px rgba(0,0,0,0.08),
+        0 14px 35px rgba(0,0,0,0.06);
   background: #ffffff;
-  padding: 20px 24px 22px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex: 0 0 600px;
+  max-width: 600px;
+  min-height: 200px;
 }
 
-/* Card heading row (icon + title) */
+/* Heading */
 .attendance-card-heading {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .attendance-icon img {
   width: 24px;
   height: 24px;
-  object-fit: contain;
 }
 
 .attendance-card-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
+  position: relative;
+  bottom: 5px;
 }
 
-/* Text inside card */
+/* Text inside card — FIXED & CLEAN */
 .attendance-card-text {
-  font-size: 13px;
+  font-size: 15px;
   color: #6b7280;
-  margin-top: 4px;
+  display: block;
+  margin-top: -5px;
+  margin-bottom: 26px;     /* keeps consistent spacing */
 }
 
+/* Pending Request helper text */
 .attendance-card-text.muted {
-  color: #d1d5db;
+  color: #b1a5aa;
   text-align: center;
-  margin-top: 18px;
+  font-size: 18px;
+  display: block;
+  margin-top: 36px;
 }
 
 .attendance-card-meta {
-  font-size: 12px;
+  font-size: 15px;
   color: #9ca3af;
-  margin-top: 2px;
 }
 
-/* QR (left) card – same base, just has button */
-
-/* Pending (right) card – lightly muted background */
+/* Pending request card */
 .attendance-card-muted {
   background: #fafafa;
+  align-self: flex-start;  
 }
 
-/* Blue “Start Attendance Session” button */
+/* Start Session Button */
 .attendance-btn-primary {
-  align-self: flex-start;
-  margin-top: 18px;
+  align-self: center;
   padding: 8px 22px;
-  border-radius: 999px;
+  border-radius: 10px;
   border: none;
   background: #1A73E8;
   color: #ffffff;
@@ -930,4 +941,97 @@ body {
   transform: translateY(-1px);
 }
 
+/* QR STATES */
+.qr-state {
+  flex-direction: column;
+}
 
+/* default state */
+.qr-before {
+  display: flex;
+}
+
+.qr-active {
+  display: none;
+  align-items: center;
+}
+
+/* toggles when session starts */
+.create-class-main-attendance-main.session-on .qr-before {
+  display: none;
+}
+.create-class-main-attendance-main.session-on .qr-active {
+  display: flex;
+}
+
+/* QR image */
+.qr-code-large {
+  margin: 20px 0 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-code-large img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Footer under QR */
+.qr-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+/* Timer row */
+.qr-timer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.qr-timer-icon {
+  position: relative;
+  top: 3px;
+  left: 7px;
+}
+
+.qr-timer-icon img {
+  width: 17px;
+  height: 17px;
+}
+
+.qr-timer-label {
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+.qr-timer-value {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* CLOSE button */
+.qr-close-btn {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.35);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.qr-close-btn:hover {
+  background: #dc2626;
+  box-shadow: 0 12px 22px rgba(239, 68, 68, 0.45);
+  transform: translateY(-1px);
+}

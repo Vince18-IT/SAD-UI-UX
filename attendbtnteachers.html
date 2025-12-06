@@ -54,25 +54,50 @@
 
     <!-- two cards -->
     <section class="attendance-grid">
-      <!-- LEFT: QR CODE -->
       <article class="attendance-card attendance-card-primary">
-        <div>
-          <div class="attendance-card-heading">
-            <span class="attendance-icon">
-              <!-- replace with your QR icon -->
-              <img src="icons/QRcode.png" alt="QR Code" />
-            </span>
-            <h2 class="attendance-card-title">QR Code</h2>
-          </div>
-          <p class="attendance-card-text">
-            Students scan this code to request attendance
-          </p>
-        </div>
+  <div class="attendance-card-heading">
+    <span class="attendance-icon">
+      <img src="icons/QRcode.png" alt="QR Code" />
+    </span>
+    <h2 class="attendance-card-title">QR Code</h2>
+  </div>
 
-        <button class="attendance-btn-primary">
-          Start Attendance Session
-        </button>
-      </article>
+  <p class="attendance-card-text">
+    Students scan this code to request attendance
+  </p>
+
+  <!-- STATE 1: before starting -->
+  <div class="qr-state qr-before">
+    <button class="attendance-btn-primary" id="start-session-btn">
+      Start Attendance Session
+    </button>
+  </div>
+
+  <!-- STATE 2: session running -->
+  <div class="qr-state qr-active">
+    <div class="qr-code-large">
+      <img src="Icons/QRcode.png" alt="QR Code" />
+    </div>
+
+    <div class="qr-footer">
+      <div class="qr-timer">
+  <div class="qr-timer-left">
+    <span class="qr-timer-icon">
+      <img src="Icons/Stopwatch.png" alt="Timer icon">
+    </span>
+    <span class="qr-timer-label">Time Remaining:</span>
+  </div>
+
+  <span class="qr-timer-value" id="qr-timer-value">15:00</span>
+</div>
+
+      <button class="qr-close-btn" id="close-session-btn">
+        Close Session
+      </button>
+    </div>
+  </div>
+</article>
+
 
       <!-- RIGHT: PENDING REQUEST -->
       <article class="attendance-card attendance-card-muted">
@@ -90,4 +115,27 @@
 </div>
 
 </body>
+
+<script>
+  const mainEl = document.querySelector('.create-class-main-attendance-main');
+  const startBtn = document.getElementById('start-session-btn');
+  const closeBtn = document.getElementById('close-session-btn');
+
+  if (startBtn) {
+    startBtn.addEventListener('click', () => {
+      // turn ON session ⇒ show big QR + timer
+      mainEl.classList.add('session-on');
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      // turn OFF session ⇒ go back to blue button
+      mainEl.classList.remove('session-on');
+      // optional: reset timer text
+      document.getElementById('qr-timer-value').textContent = '15:00';
+    });
+  }
+</script>
+
 </html>
